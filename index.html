@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <title>ReelFlow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">▶</span> ReelFlow</div>
+    <button id="refreshBtn" class="icon-btn" aria-label="Refresh feed" title="Refresh feed">↻</button>
+  </header>
+
+  <main>
+    <section id="setupNotice" class="notice">
+      <strong>Automatic feed prototype</strong>
+      <p>This site is ready for an authorized video-feed API. Until one is configured, it uses sample videos so you can test the scrolling experience.</p>
+      <button id="settingsBtn" class="small-btn">Feed settings</button>
+    </section>
+
+    <section id="settingsPanel" class="settings hidden">
+      <h2>Feed settings</h2>
+      <p>Enter your own backend endpoint that returns public video items. Keep API keys on the server, never in this page.</p>
+      <label for="endpointInput">Feed API endpoint</label>
+      <input id="endpointInput" type="url" placeholder="https://your-server.example/api/feed">
+      <div class="settings-actions">
+        <button id="saveEndpoint" class="primary-btn">Save endpoint</button>
+        <button id="closeSettings" class="small-btn">Close</button>
+      </div>
+      <p class="hint">Expected JSON: <code>[{"videoUrl":"https://…mp4","caption":"…","creator":"…"}]</code> or <code>{"items":[…]}</code>. Instagram's official API does not provide a general public Reels recommendation feed; an endpoint must use a source and access method you are authorized to use.</p>
+    </section>
+
+    <section id="feed" class="feed" aria-label="Short video feed"></section>
+    <div id="status" class="status" role="status">Loading feed…</div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" aria-label="Feed"><span>⌂</span><small>Feed</small></button>
+    <button class="nav-item" id="savedNav" aria-label="Saved videos"><span>♡</span><small>Saved</small></button>
+    <button class="nav-item" id="aboutNav" aria-label="About"><span>ⓘ</span><small>About</small></button>
+  </nav>
+  <script src="app.js"></script>
+</body>
+</html>
